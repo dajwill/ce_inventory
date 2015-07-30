@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Check Outs</h1>
+
+<table class="ui cell structured table">
+  <thead>
+    <tr>
+      <th rowspan="2">Item</th>
+      <th rowspan="2">User</th>
+      <th rowspan="2">Check Out Date</th>
+      <th rowspan="2">Return Date</th>
+      <th rowspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @check_outs.each do |check_out| %>
+      <tr>
+        <td><%= check_out_item(check_out).name %></td>
+        <td><%= check_out_user(check_out).email %></td>
+        <td><%= check_out.check_out_date %></td>
+        <td><%= check_out.return_date %></td>
+        <td>
+          <%= link_to 'Show', check_out %>
+          <%= link_to 'Edit', edit_check_out_path(check_out) %>
+          <%= link_to 'Destroy', check_out, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+<%= link_to 'New Check out', new_check_out_path %>

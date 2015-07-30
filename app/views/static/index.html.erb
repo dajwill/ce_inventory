@@ -1,0 +1,7 @@
+<h1>Creative Exploratory</h1>
+<select id="e1">
+  <% Item.all.each do |item| %>
+    <option value="<%= item.id %>"><%= item.name %></option>
+  <% end %>
+</select>
+<%= link_to 'Inventory', items_path %>

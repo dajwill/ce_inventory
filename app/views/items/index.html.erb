@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>CE Inventory</h1>
+
+<table class="ui cell structured table">
+  <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th rowspan="2">Model</th>
+      <th rowspan="2">Checked Out</th>
+      <th rowspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <% update_inventory(item) %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.model %></td>
+        <td><%= item.checked_out %></td>
+        <td>
+          <%= link_to 'Show', item %>
+          <%= link_to 'Edit', edit_item_path(item) %>
+          <%= link_to 'Check Out', new_check_out_path(item_id: item.id) %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>
