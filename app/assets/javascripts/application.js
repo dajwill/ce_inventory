@@ -18,3 +18,4 @@
 //= require_tree .
 
 $(document).ready(function() { $("#e1").select2(); });
+$(document).ready(function() { $(".select-user").select2(); });
