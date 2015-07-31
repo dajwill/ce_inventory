@@ -18,7 +18,7 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.model %></td>
-        <td><%= item.checked_out %></td>
+        <td><%= item.checked_out %> (<%= get_checkout_user(item) %>)</td>
         <td>
           <%= link_to 'Show', item %>
           <%= link_to 'Edit', edit_item_path(item) %>

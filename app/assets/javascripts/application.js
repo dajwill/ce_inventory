@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.turbolinks
 //= require turbolinks
 //= require semantic-ui
 //= require select2

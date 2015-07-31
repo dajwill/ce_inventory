@@ -6,4 +6,10 @@ module ItemsHelper
       item.update(checked_out: false)
     end
   end
+
+  def get_checkout_user item
+    if item.checked_out
+      User.find(item.check_outs.first.user_id).email
+    end
+  end
 end
