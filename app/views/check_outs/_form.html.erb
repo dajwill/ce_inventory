@@ -11,10 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :item_id %><br>
-    <%= f.text_field :item_id, place_holder: params[:item_id] %>
-  </div>
+  <% if !params[:item_id].empty? %>
+    <div class="field">
+      <%= f.label :item_id %><br>
+      <%= f.text_field :item_id, value: params[:item_id] %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= f.label :item_id %><br>
+      <%= f.text_field :item_id %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.select(:user_id, User.all.collect{|user| [user.email, user.id]}, {prompt: 'Select User'}, {class: 'select-user'}) %>
