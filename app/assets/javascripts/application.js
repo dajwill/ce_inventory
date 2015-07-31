@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require semantic-ui
 //= require select2
@@ -19,3 +20,6 @@
 
 $(document).ready(function() { $("#e1").select2(); });
 $(document).ready(function() { $(".select-user").select2(); });
+$(function() {
+  $('#check_out_return_date').datepicker();
+});

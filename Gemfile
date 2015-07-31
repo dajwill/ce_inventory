@@ -48,4 +48,5 @@ group :development, :test do
     gem "better_errors"
   end
   gem 'select2-rails'
+  gem 'jquery-ui-rails'
 end

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
-    <%= f.select(:user_id, User.all.collect{|user| [user.email, user.id]}, {}, {class: 'select-user'}) %>
+    <%= f.select(:user_id, User.all.collect{|user| [user.email, user.id]}, {prompt: 'Select User'}, {class: 'select-user'}) %>
   </div>
   <div class="field">
     <%= f.label :check_out_date %><br>
@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :return_date %><br>
-    <%= f.datetime_select :return_date %>
+    <%= f.text_field :return_date %>
   </div>
   <div class="actions">
     <%= f.submit %>
