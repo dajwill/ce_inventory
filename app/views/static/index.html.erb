@@ -1,7 +1,1 @@
 <h1>Creative Exploratory</h1>
-<select id="e1">
-  <% User.all.each do |user| %>
-    <option value="<%= user.id %>"><%= user.email %></option>
-  <% end %>
-</select>
-<%= link_to 'Inventory', items_path %>

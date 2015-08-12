@@ -12,9 +12,14 @@
     <span class="active item">
       <%= link_to 'Inventory', items_path %>
     </span>
-    <span class="item">
-      <%= link_to 'Checked Out', check_outs_path %>
-    </span>
+    <% if admin? %>
+      <span class="item">
+        <%= link_to 'Checked Out', check_outs_path %>
+      </span>
+      <span class="item">
+        <%= link_to 'Users', users_index_path %>
+      </span>
+    <% end %>
     <div class="right menu">
       <% if current_user %>
         <span class="ui item">

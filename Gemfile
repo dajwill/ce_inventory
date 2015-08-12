@@ -50,4 +50,5 @@ group :development, :test do
   end
   gem 'select2-rails'
   gem 'jquery-ui-rails'
+  gem 'simple_form'
 end

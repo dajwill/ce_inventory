@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   get '/' => 'static#index'
   resources :check_outs
   resources :items
+  resources :waitlists
+  post '/join_waitlist' => 'waitlists#join', as: 'join_waitlist'
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+  get '/users/index' => 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

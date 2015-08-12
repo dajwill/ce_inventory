@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<h1>CE Inventory</h1>
+
+<table class="ui cell structured table">
+  <thead>
+    <tr>
+      <th rowspan="2">Email</th>
+      <th rowspan="2">Phone</th>
+      <th rowspan="2">Admin</th>
+      <th rowspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.admin %></td>
+        <td>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<br>

@@ -1,41 +1,13 @@
-<%= form_for(@check_out) do |f| %>
-  <% if @check_out.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@check_out.errors.count, "error") %> prohibited this check_out from being saved:</h2>
-
-      <ul>
-      <% @check_out.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="ui four column grid">
+  <div class="ui column">
+    <div class="ui form">
+      <%= simple_form_for(@check_out) do |f| %>
+        <%= f.text_field :item_id, value: params[:item_id], required: true, class: 'field' %>
+        <%= f.select(:user_id, User.all.collect{|user| [user.email, user.id]}, {prompt: 'Select User'}, {class: 'select-user field'}) %>
+        <%= f.input :check_out_date, as: :hidden %>
+        <%= f.text_field :return_date, required: true %>
+        <%= f.button :submit, class: 'ui button' %>
       <% end %>
-      </ul>
     </div>
-  <% end %>
-
-  <% if !params[:item_id].empty? %>
-    <div class="field">
-      <%= f.label :item_id %><br>
-      <%= f.text_field :item_id, value: params[:item_id] %>
-    </div>
-  <% else %>
-    <div class="field">
-      <%= f.label :item_id %><br>
-      <%= f.text_field :item_id %>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.select(:user_id, User.all.collect{|user| [user.email, user.id]}, {prompt: 'Select User'}, {class: 'select-user'}) %>
   </div>
-  <div class="field">
-    <%= f.label :check_out_date %><br>
-    <%= f.datetime_select :check_out_date %>
-  </div>
-  <div class="field">
-    <%= f.label :return_date %><br>
-    <%= f.text_field :return_date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

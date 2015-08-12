@@ -1,4 +1,5 @@
 class CheckOutsController < ApplicationController
+  before_filter :authorize_admin
   before_action :set_check_out, only: [:show, :edit, :update, :destroy]
 
   # GET /check_outs
@@ -31,7 +32,7 @@ class CheckOutsController < ApplicationController
         format.html { redirect_to @check_out, notice: 'Check out was successfully created.' }
         format.json { render :show, status: :created, location: @check_out }
       else
-        format.html { render :new }
+        format.html { redirect_to items_url }
         format.json { render json: @check_out.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +58,7 @@ class CheckOutsController < ApplicationController
     CheckOutHistory.new(user_id: @check_out.user_id, item_id: @check_out.item_id).save
     @check_out.destroy
     respond_to do |format|
-      format.html { redirect_to check_outs_url, notice: 'Check out was successfully destroyed.' }
+      format.html { redirect_to items_url, notice: 'Check out was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

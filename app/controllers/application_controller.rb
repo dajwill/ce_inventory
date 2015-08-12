@@ -8,7 +8,22 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def admin?
+    if current_user
+      current_user.admin
+    end
+  end
+  helper_method :admin?
+
   def authorize
     redirect_to '/login' unless current_user
   end
+
+  def authorize_admin
+    if !admin?
+      flash[:notice] = "You do not have permissions!"
+      redirect_to '/items'
+    end
+  end
+  helper_method :authorize_admin
 end

@@ -5,7 +5,11 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    if admin?
+      @items = Item.all
+    else
+      @items = Item.where(checked_out: false)
+    end
   end
 
   # GET /items/1

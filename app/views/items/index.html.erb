@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <h1>CE Inventory</h1>
 
@@ -7,7 +10,9 @@
     <tr>
       <th rowspan="2">Name</th>
       <th rowspan="2">Model</th>
-      <th rowspan="2">Checked Out</th>
+      <% if admin? %>
+        <th rowspan="2">Checked Out</th>
+      <% end %>
       <th rowspan="3">Actions</th>
     </tr>
   </thead>
@@ -18,12 +23,18 @@
       <tr>
         <td><%= item.name %></td>
         <td><%= item.model %></td>
-        <td><%= item.checked_out %> (<%= get_checkout_user(item) %>)</td>
+        <% if admin? %>
+          <td><%= item.checked_out %> (<%= get_checkout_user(item) %>)</td>
+        <% end %>
         <td>
           <%= link_to 'Show', item %>
-          <%= link_to 'Edit', edit_item_path(item) %>
-          <%= link_to 'Check Out', new_check_out_path(item_id: item.id) %>
-          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% if admin? %>
+            <%= link_to 'Edit', edit_item_path(item) %>
+            <%= link_to 'Check Out', new_check_out_path(item_id: item.id) %>
+            <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% else %>
+            <%= link_to 'Join Waitlist', join_waitlist_path(item_id: item.id, user_id: current_user.id), method: :post, data: { confirm: 'Do you want to like this dish'} %>
+          <% end %>
         </td>
       </tr>
     <% end %>
